@@ -30,7 +30,7 @@ app.post('/produtos/', (req, res) => {
 
     const { nome, preco } = req.body;
 
-    posts[id] = {
+    produtos[id] = {
         id, 
         nome, 
         preco,
@@ -38,3 +38,9 @@ app.post('/produtos/', (req, res) => {
 
     res.status(201).send(produtos[id]);
 });
+
+
+app.listen(4000, () => {
+    console.log("ProdutoService listening on port 4000");
+  });
+  
