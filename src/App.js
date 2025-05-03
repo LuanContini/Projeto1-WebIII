@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import ProdutosCreate from "./components/ProdutosCreate";
+import ProdutosCreate from "./components/Produtos/ProdutosCreate";
 
 function App() {
   return (
