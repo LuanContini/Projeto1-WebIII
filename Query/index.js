@@ -6,29 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-//exemplo de estrutura de dados do Query Service
-/*
-    produtos = {
-        p1: {
-            id: 'p1',
-            title: 'Primeiro Post',
-            comments: [
-            {
-                id: 'c1',
-                content: 'comentario 1'
-            },
-            {
-                id: 'c2',
-                content: 'comentario 2'
-            },
-            {
-                id: 'c3',
-                content: 'comentario 3'
-            },
-            ]
-        }
-    }
-*/
+
 const produtos = {};
 const pedidos = {};
 
@@ -43,19 +21,21 @@ app.post('/events', (req, res) => {
     const { type } = req.body;
 
     if(type === 'ProdutoCreated'){
-        const { id, nome, preco } = req.body;
+        const { dados } = req.body;
+        const {id, nome, preco} = dados;
 
         produtos[id] = {id, nome, preco};
     }
     if(type === 'PedidoCreated'){
-        const {id, /*dados do pedido que precisam ser pegos do body*/} = req.body;
+        const {id, produto, quantidade} = req.body;
 
-        pedidos[id] = {/*dados do pedido*/}
+        pedidos[id] = {produto, quantidade};
     }
 
 
     res.send({msg: `Evento ${type} recebido e tratado`});
     console.log('[Query Service] all produtos: ', produtos);
+    console.log('[Query Service] all pedidos: ', pedidos);
 });
 
 app.listen(4002, () => {
