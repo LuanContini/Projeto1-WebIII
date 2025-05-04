@@ -4,7 +4,7 @@ import ProdutosCreate from "./components/Produtos/ProdutosCreate";
 function App() {
   return (
     <div className="App">
-      <ProdutosCreate />
+      <PedidosCreate />
     </div>
   );
 }
