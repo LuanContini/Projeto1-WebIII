@@ -18,10 +18,12 @@ const PedidosList = () => {
   }, []);
 
   const renderedPedidos = Object.values(pedidos).map((pedido) => {
+    const dataFormatada = new Date(pedido.dataAtual).toLocaleString("pt-BR");
     return (
       <div className="pedido-card" key={pedido.id}>
-        <h3>Produto: {pedido.produto}</h3>
-        <p>Quantidade: {pedido.quantidade}</p>
+      <h3>Produto: {pedido.produto}</h3>
+      <p>Quantidade: {pedido.quantidade}</p>
+      <p>Data Venda: {dataFormatada}</p>
       </div>
     );
   });
