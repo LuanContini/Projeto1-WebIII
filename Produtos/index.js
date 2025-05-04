@@ -36,6 +36,18 @@ app.post('/produtos/', async (req, res) => {
         dados: { id, nome, preco },
     });
 
+    try{
+        await axios.post('http://localhost:4005/events', {
+            type: 'ProdutoCreated',
+            id,
+            nome,
+            preco
+        });
+    } catch( err ){
+        console.log('Erro ao enviar evento para o event bus\nErro: ', err);
+        res.status(400).send(err);
+    }
+
     res.status(201).send(produtos[id]);
 });
 
