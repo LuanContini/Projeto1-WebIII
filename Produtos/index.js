@@ -24,17 +24,17 @@ app.get('/produtos', (req, res) => {
     res.send(produtos);
 });
 
-app.post('/produtos/', async (req, res) =>  {
-
+app.post('/produtos/', async (req, res) => {
     const id = randomBytes(4).toString("hex");
-
     const { nome, preco } = req.body;
 
-    produtos[id] = {
-        id, 
-        nome, 
-        preco,
-    }
+    produtos[id] = { id, nome, preco };
+
+    // Enviar evento para o EventBus
+    await axios.post("http://localhost:4005/eventos", {
+        tipo: "ProdutoCriado",
+        dados: { id, nome, preco },
+    });
 
     try{
         await axios.post('http://localhost:4005/events', {
@@ -57,4 +57,3 @@ app.post('/produtos/', async (req, res) =>  {
 app.listen(4000, () => {
     console.log("ProdutoService listening on port 4000");
   });
-  
