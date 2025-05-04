@@ -43,12 +43,14 @@ app.post('/produtos/', async (req, res) =>  {
             nome,
             preco
         });
+
+        return res.status(201).send(produtos[id]);
     } catch( err ){
         console.log('Erro ao enviar evento para o event bus\nErro: ', err);
-        res.status(400).send(err);
+        return res.status(400).send(err);
     }
 
-    res.status(201).send(produtos[id]);
+    
 });
 
 
