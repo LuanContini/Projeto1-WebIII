@@ -1,11 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import ProdutosCreate from "./components/ProdutosCreate";
+import PedidosCreate from "./components/PedidosCreate";
 
 function App() {
   return (
     <div className="App">
-      <ProdutosCreate />
+      <PedidosCreate />
     </div>
   );
 }
