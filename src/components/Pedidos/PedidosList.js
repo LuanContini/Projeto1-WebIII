@@ -21,9 +21,10 @@ const PedidosList = () => {
     const dataFormatada = new Date(pedido.dataAtual).toLocaleString("pt-BR");
     return (
       <div className="pedido-card" key={pedido.id}>
-      <h3>Produto: {pedido.produto}</h3>
-      <p>Quantidade: {pedido.quantidade}</p>
-      <p>Data Venda: {dataFormatada}</p>
+        <h3>Produto: {pedido.nome.nome}</h3>
+        <p>ID Produto: {pedido.id}</p>
+        <p>Quantidade: {pedido.quantidade}</p>
+        <p>Data Venda: {dataFormatada}</p>
       </div>
     );
   });

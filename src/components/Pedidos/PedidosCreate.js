@@ -3,7 +3,7 @@ import PedidosList from "./PedidosList";
 import "./PedidosCreate.css";
 
 const PedidosCreate = () => {
-  const [produto, setProduto] = useState("");
+  const [produto, setProduto] = useState({ id: "", nome: "" });
   const [quantidade, setQuantidade] = useState("");
   const [produtos, setProdutos] = useState([]);
   const [erro, setErro] = useState("");
@@ -58,7 +58,7 @@ const PedidosCreate = () => {
       const data = await response.json();
       console.log("Pedido criado com sucesso: ", data);
 
-      setProduto("");
+      setProduto({ id: "", nome: "" });
       setQuantidade("");
     } catch (error) {
       console.log("Erro ao enviar o formulário: ", error);
@@ -76,12 +76,20 @@ const PedidosCreate = () => {
         <label className="pedidos-label">Produto</label>
         <select
           name="produto"
-          onChange={(e) => setProduto(e.target.value)}
-          value={produto}
+          onChange={(e) => {
+            const selectedProduto = produtos.find(
+              (prod) => prod.id === e.target.value
+            );
+            setProduto({
+              id: selectedProduto ? selectedProduto.id : "",
+              nome: selectedProduto ? selectedProduto.nome : "",
+            });
+          }}
+          value={produto.id || ""}
         >
           <option value="">Selecione um produto</option>
           {produtos.map((prod) => (
-            <option key={prod.id} value={prod.id}>
+            <option key={prod.id} value={prod.id} data-nome={prod.nome}>
               {prod.nome} - R$ {prod.preco}
             </option>
           ))}
@@ -94,7 +102,6 @@ const PedidosCreate = () => {
           onChange={(e) => setQuantidade(e.target.value)}
           value={quantidade}
         />
-
         <button type="submit">Enviar Pedido</button>
       </form>
       <PedidosList />

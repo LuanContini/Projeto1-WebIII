@@ -28,8 +28,9 @@ app.post('/events', (req, res) => {
     }
     if(type === 'PedidoCreated'){
         const {id, produto, quantidade} = req.body;
-
         pedidos[id] = {produto, quantidade};
+        
+        console.log('Pedido recebido Query: ', id, produto, quantidade);
     }
 
 
