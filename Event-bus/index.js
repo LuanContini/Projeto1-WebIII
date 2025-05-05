@@ -13,9 +13,9 @@ app.post("/events", async (req, res) => {
   console.log("EventBus - Evento recebido:", evento.type);
 
   try {
-    await axios.post("http://localhost:4000/events", evento); // ProdutoService
-    await axios.post("http://localhost:4001/events", evento); // PedidoService
-    await axios.post("http://localhost:4002/events", evento); // QueryService
+    await axios.post("http://localhost:4000/events", evento);
+    await axios.post("http://localhost:4001/events", evento);
+    await axios.post("http://localhost:4002/events", evento);
   } catch (err) {
     console.log("Erro ao repassar evento:", err.message);
   }

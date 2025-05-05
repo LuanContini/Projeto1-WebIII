@@ -8,14 +8,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-/*
-    pedidos = {
-        id: <String/Hex>,
-        produto: <String>,
-        quantidade: <Int>
-    }
-*/
-
 let pedidos = {};
 
 app.get("/pedidos", (req, res) => {
