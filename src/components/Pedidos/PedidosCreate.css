@@ -1,17 +1,32 @@
+/* Estilo global para o dark theme */
+body {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  min-height: 100vh; /* Garante que o fundo cubra toda a tela */
+  padding: 20px;
+}
+
 .pedidos-create {
   max-width: 60%;
   margin: 40px auto;
   padding: 25px;
-  background-color: #fffaf0; /* Bege claro */
+  background-color: #1e1e1e; /* Fundo escuro */
   border: 2px solid #ffa500; /* Laranja vibrante */
   border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
 .pedidos-create h1 {
   text-align: center;
   font-size: 2rem;
-  color: #ff8c00; /* Laranja escuro */
+  color: #ffc107; /* Amarelo vibrante */
   margin-bottom: 25px;
   font-weight: bold;
   text-transform: uppercase;
@@ -25,7 +40,7 @@
 
 .pedidos-create label {
   font-size: 1.2rem;
-  color: #333;
+  color: #e0e0e0; /* Texto claro */
   font-weight: 600;
 }
 
@@ -35,14 +50,16 @@
   font-size: 1rem;
   border: 2px solid #ffa500;
   border-radius: 8px;
+  background-color: #121212; /* Fundo do input */
+  color: #e0e0e0; /* Texto claro */
   outline: none;
   transition: all 0.3s ease;
 }
 
 .pedidos-create select:focus,
 .pedidos-create input:focus {
-  border-color: #ff8c00;
-  box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+  border-color: #ffc107;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
 }
 
 .pedidos-create button {
@@ -64,7 +81,7 @@
 }
 
 .erro {
-  color: #d9534f; /* Vermelho */
+  color: #ff6b6b; /* Vermelho vibrante */
   font-size: 1rem;
   margin-bottom: 15px;
   text-align: center;
@@ -77,14 +94,14 @@
   gap: 20px;
   justify-content: center;
   padding: 20px;
-  background-color: #fffaf0; /* Bege claro */
+  background-color: #121212; /* Fundo escuro */
 }
 
 .pedido-card {
-  background-color: #ffffff;
+  background-color: #1e1e1e; /* Fundo do card */
   border: 2px solid #ffa500; /* Laranja vibrante */
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   padding: 20px;
   width: 250px;
   text-align: center;
@@ -93,17 +110,17 @@
 
 .pedido-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .pedido-card h3 {
   font-size: 1.8rem;
-  color: #ff8c00;
+  color: #ffc107; /* Amarelo vibrante */
   margin-bottom: 10px;
   font-weight: bold;
 }
 
 .pedido-card p {
   font-size: 1.4rem;
-  color: #333;
+  color: #e0e0e0; /* Texto claro */
 }

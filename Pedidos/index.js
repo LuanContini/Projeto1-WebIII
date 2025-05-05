@@ -10,10 +10,12 @@ app.use(cors());
 
 let pedidos = {};
 
+// Rota para obter pedidos
 app.get("/pedidos", (req, res) => {
   res.send(pedidos);
 });
 
+// Rota para criar um novo pedido
 app.post("/pedidos", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { produto, quantidade } = req.body;
@@ -26,6 +28,7 @@ app.post("/pedidos", async (req, res) => {
     dataAtual,
   };
 
+  // Enviando evento para o Event Bus
   await axios.post("http://localhost:4005/events", {
     type: "PedidoCreated",
     id,
@@ -33,25 +36,24 @@ app.post("/pedidos", async (req, res) => {
     dataAtual,
   });
 
-  console.log(pedidos[id])
-
   res.status(201).send(pedidos[id]);
 });
 
 let produtosRecebidos = {};
 
+// Rota para receber eventos
 app.post("/events", (req, res) => {
   const { type, dados } = req.body;
 
   if (type === "ProdutoCreated") {
     const { id, nome, preco } = dados;
     produtosRecebidos[id] = { id, nome, preco };
-    console.log("Produto recebido:", produtosRecebidos[id]);
   }
 
   res.send({ status: "OK" });
 });
 
+// Iniciando o servidor
 app.listen(4001, () => {
   console.log("PedidoService listening on port 4001");
 });

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import "./styles/Global.css";
 import ProdutosCreate from "./components/Produtos/ProdutosCreate";
 import PedidosCreate from "./components/Pedidos/PedidosCreate";
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './PedidosList.css';
 
 const PedidosList = () => {
   const [pedidos, setPedidos] = useState({});
@@ -29,7 +30,11 @@ const PedidosList = () => {
     );
   });
 
-  return <div className="pedidos-list">{renderedPedidos}</div>;
+  return (
+    <div className="pedidos-list">
+      {renderedPedidos}
+    </div>
+  );
 };
 
 export default PedidosList;

@@ -1,17 +1,31 @@
+/* Estilo global para o dark theme */
+body {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  min-height: 100vh; /* Garante que o fundo cubra toda a tela */
+  padding: 20px;
+}
+
 .produtos-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
   padding: 20px;
-  background-color: #f0f8ff; /* Azul claro */
 }
 
 .produtos-card {
-  background-color: #ffffff;
+  background-color: #1e1e1e; /* Fundo do card */
   border: 2px solid #007acc; /* Azul vibrante */
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   padding: 20px;
   width: 250px;
   text-align: center;
@@ -20,19 +34,19 @@
 
 .produtos-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .produtos-card h3 {
   font-size: 1.8rem;
-  color: #0056b3;
+  color: #80d4ff; /* Azul claro */
   margin-bottom: 10px;
   font-weight: bold;
 }
 
 .produtos-card p {
   font-size: 1.4rem;
-  color: #333;
+  color: #e0e0e0; /* Texto claro */
 }
 
 .produtos-card p::before {
