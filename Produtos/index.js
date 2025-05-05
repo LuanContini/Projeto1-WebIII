@@ -13,11 +13,13 @@ let produtos = {};
 
 // Rota para obter produtos
 app.get("/produtos", (req, res) => {
+  console.log("GET /produtos chamado");
   res.send(produtos);
 });
 
 // Rota para criar um novo produto
 app.post("/produtos/", async (req, res) => {
+  console.log("POST /produtos chamado com body:", req.body);
   const id = randomBytes(4).toString("hex");
   const { nome, preco } = req.body;
 
@@ -29,17 +31,18 @@ app.post("/produtos/", async (req, res) => {
       type: "ProdutoCreated",
       dados: { id, nome, preco },
     });
+    console.log("Evento ProdutoCreated enviado");
     return res.status(201).send(produtos[id]);
   } catch (err) {
+    console.error("Erro ao enviar evento ProdutoCreated:", err.message);
     return res.status(400).send(err);
   }
 });
 
 // Rota para receber eventos
 app.post("/events", (req, res) => {
-  const { type } = req.body;
-
-  res.send(`Evento ${type} recebido`);
+  console.log("Evento recebido no ProdutoService:", req.body);
+  res.send(`Evento ${req.body.type} recebido`);
 });
 
 // Iniciando o servidor

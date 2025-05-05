@@ -17,16 +17,19 @@ app.get('/produtos', (req, res) => {
 // Rota para receber eventos
 app.post('/events', (req, res) => {
     const { type } = req.body;
+    console.log("Evento recebido no QueryService:", req.body);
 
     if(type === 'ProdutoCreated'){
         const { dados } = req.body;
         const {id, nome, preco} = dados;
 
         produtos[id] = {id, nome, preco};
+        console.log("Produto adicionado ao QueryService:", produtos[id]);
     }
     if(type === 'PedidoCreated'){
         const {id, produto, quantidade} = req.body;
         pedidos[id] = {produto, quantidade};
+        console.log("Pedido adicionado ao QueryService:", pedidos[id]);
     }
 
     res.send({msg: `Evento ${type} recebido e tratado`});
