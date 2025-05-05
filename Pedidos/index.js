@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const { randomBytes } = require("crypto");
+const axios = require('axios');
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,37 +18,48 @@ app.use(cors());
 
 let pedidos = {};
 
-app.get('/pedidos', (req, res) => {
-    res.send(pedidos);
+app.get("/pedidos", (req, res) => {
+  res.send(pedidos);
 });
 
-app.post('/pedidos', (req, res) => {
-    const id = randomBytes(4).toString("hex");
-    const { produto, quantidade } = req.body;
+app.post("/pedidos", async (req, res) => {
+  const id = randomBytes(4).toString("hex");
+  const { produto, quantidade } = req.body;
+  const dataAtual = new Date().toISOString();
 
-    pedidos[id] = {
-        id,
-        produto,
-        quantidade,
-    };
+  pedidos[id] = {
+    id,
+    nome: produto,
+    quantidade,
+    dataAtual,
+  };
 
-    res.status(201).send(pedidos[id]);
+  await axios.post("http://localhost:4005/events", {
+    type: "PedidoCreated",
+    id,
+    nome: produto,
+    dataAtual,
+  });
+
+  console.log(pedidos[id])
+
+  res.status(201).send(pedidos[id]);
 });
 
 let produtosRecebidos = {};
 
-app.post('/eventos', (req, res) => {
-    const { tipo, dados } = req.body;
+app.post("/events", (req, res) => {
+  const { type, dados } = req.body;
 
-    if (tipo === "ProdutoCriado") {
-        const { id, nome, preco } = dados;
-        produtosRecebidos[id] = { id, nome, preco };
-        console.log("Produto recebido:", produtosRecebidos[id]);
-    }
+  if (type === "ProdutoCreated") {
+    const { id, nome, preco } = dados;
+    produtosRecebidos[id] = { id, nome, preco };
+    console.log("Produto recebido:", produtosRecebidos[id]);
+  }
 
-    res.send({ status: "OK" });
+  res.send({ status: "OK" });
 });
 
 app.listen(4001, () => {
-    console.log("PedidoService listening on port 4001");
+  console.log("PedidoService listening on port 4001");
 });
