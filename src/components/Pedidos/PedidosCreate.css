@@ -1,0 +1,126 @@
+/* Estilo global para o dark theme */
+body {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  min-height: 100vh; /* Garante que o fundo cubra toda a tela */
+  padding: 20px;
+}
+
+.pedidos-create {
+  max-width: 60%;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #1e1e1e; /* Fundo escuro */
+  border: 2px solid #ffa500; /* Laranja vibrante */
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.pedidos-create h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffc107; /* Amarelo vibrante */
+  margin-bottom: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.pedidos-create form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pedidos-create label {
+  font-size: 1.2rem;
+  color: #e0e0e0; /* Texto claro */
+  font-weight: 600;
+}
+
+.pedidos-create select,
+.pedidos-create input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ffa500;
+  border-radius: 8px;
+  background-color: #121212; /* Fundo do input */
+  color: #e0e0e0; /* Texto claro */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.pedidos-create select:focus,
+.pedidos-create input:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+}
+
+.pedidos-create button {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #ffa500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pedidos-create button:hover {
+  background-color: #ff8c00;
+  transform: translateY(-3px);
+}
+
+.erro {
+  color: #ff6b6b; /* Vermelho vibrante */
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pedidos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #121212; /* Fundo escuro */
+}
+
+.pedido-card {
+  background-color: #1e1e1e; /* Fundo do card */
+  border: 2px solid #ffa500; /* Laranja vibrante */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pedido-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.pedido-card h3 {
+  font-size: 1.8rem;
+  color: #ffc107; /* Amarelo vibrante */
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.pedido-card p {
+  font-size: 1.4rem;
+  color: #e0e0e0; /* Texto claro */
+}

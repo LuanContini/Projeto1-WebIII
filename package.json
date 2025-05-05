@@ -7,10 +7,11 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.9.0",
+    "concurrently": "^9.1.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",
-    "axios": "^1.9.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.3",
@@ -18,10 +19,16 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:start-react": "react-scripts start",
+    "start:event-bus": "cd Event-bus && npm start",
+    "start:pedidos": "cd Pedidos && npm start",
+    "start:produtos": "cd Produtos && npm start",
+    "start:query": "cd Query && npm start",
+    "start:frontend": "cd frontend && npm start",
+    "start:all": "concurrently \"npm run start:start-react\" \"npm run start:event-bus\" \"npm run start:pedidos\" \"npm run start:produtos\" \"npm run start:query\" \"npm run start:frontend\""
   },
   "eslintConfig": {
     "extends": [

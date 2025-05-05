@@ -7,22 +7,27 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// Rota para receber eventos
 app.post("/events", async (req, res) => {
   const evento = req.body;
-
-  console.log("EventBus - Evento recebido:", evento.type);
+  console.log("Evento recebido no EventBus:", evento);
 
   try {
-    await axios.post("http://localhost:4000/events", evento); // ProdutoService
-    await axios.post("http://localhost:4001/events", evento); // PedidoService
-    await axios.post("http://localhost:4002/events", evento); // QueryService
+    // Repassando eventos para os serviços
+    await axios.post("http://localhost:4000/events", evento);
+    console.log("Evento enviado para ProdutoService");
+    await axios.post("http://localhost:4001/events", evento);
+    console.log("Evento enviado para PedidoService");
+    await axios.post("http://localhost:4002/events", evento);
+    console.log("Evento enviado para QueryService");
   } catch (err) {
-    console.log("Erro ao repassar evento:", err.message);
+    console.error("Erro ao repassar evento:", err.message);
   }
 
   res.send({ status: "OK" });
 });
 
+// Iniciando o servidor
 app.listen(4005, () => {
   console.log("EventBus escutando na porta 4005");
 });

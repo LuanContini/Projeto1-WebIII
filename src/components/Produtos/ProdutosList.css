@@ -1,41 +1,56 @@
+/* Estilo global para o dark theme */
+body {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  min-height: 100vh; /* Garante que o fundo cubra toda a tela */
+  padding: 20px;
+}
+
 .produtos-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
   padding: 20px;
-  background-color: #f9f9f9;
 }
 
 .produtos-card {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1e1e1e; /* Fundo do card */
+  border: 2px solid #007acc; /* Azul vibrante */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   padding: 20px;
   width: 250px;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .produtos-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .produtos-card h3 {
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 1.8rem;
+  color: #80d4ff; /* Azul claro */
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .produtos-card p {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: 1.4rem;
+  color: #e0e0e0; /* Texto claro */
 }
 
 .produtos-card p::before {
   content: "R$ ";
   font-weight: bold;
-  color: #333;
+  color: #007acc;
 }
